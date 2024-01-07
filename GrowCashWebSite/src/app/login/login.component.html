@@ -1,0 +1,30 @@
+<!-- login.component.html -->
+<div class="login-container">
+    <div class="row" style="text-align: center;">
+        <h2>Login</h2>
+    </div>
+    
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+      
+      <div class="form-group">
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="user.email" required>
+
+        <div class="error-message" *ngIf="loginForm.submitted && (loginForm.controls['email'].hasError('required') || loginForm.controls['email'].hasError('email'))">
+            Por favor, insira um e-mail válido.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password" [(ngModel)]="user.password" required>
+
+        <div class="error-message" *ngIf="loginForm.submitted && loginForm.controls['password'].hasError('required')">
+            Por favor, preencha o campo Senha.
+        </div>
+      </div>
+      
+      <button type="submit">Entrar</button>
+      <button class="btn btn-primary flat" type="button" >Cadastro</button>
+    </form>
+</div>
